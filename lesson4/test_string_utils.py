@@ -22,7 +22,7 @@ from string_utils import StringUtils
 )
 def test_capitalize_positive(input_string, expected_output):
     utils = StringUtils()
-    assert utils.capitilize(input_string) == expected_output
+    assert utils.capitalize(input_string) == expected_output
 
 
 # Негативные тесты
@@ -37,7 +37,7 @@ def test_capitalize_positive(input_string, expected_output):
 @pytest.mark.xfail(raises=AttributeError)  # AttributeError для неверного типа
 def test_capitalize_negative(input_string):
     utils = StringUtils()
-    utils.capitilize(input_string)
+    utils.capitalize(input_string)
 
 
 # Принимает на вход текст и удаляет пробелы в начале, если они есть
