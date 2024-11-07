@@ -6,8 +6,7 @@ from selenium.webdriver.common.by import By
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    yield driver
-    driver.quit()
+    return driver
 
 
 def test_shopping_cart_checkout(driver):
@@ -26,5 +25,7 @@ def test_shopping_cart_checkout(driver):
     driver.find_element(By.ID, "last-name").send_keys("Макарова")
     driver.find_element(By.ID, "postal-code").send_keys("222222")
     driver.find_element(By.ID, "continue").click()
-    assert "Total: $58.29" in driver.find_element(
+    total_price = driver.find_element(
         By.CSS_SELECTOR, ".summary_total_label").text
+    driver.quit()
+    assert total_price == "Total: $58.29"
