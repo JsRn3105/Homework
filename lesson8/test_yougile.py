@@ -13,9 +13,9 @@ new_company_id = None
 def get_auth_token():
     global token
     keys = {
-        "login": "31may97@mail.ru",
-        "password": "T49/F)c;Za^?m(V",
-        "companyId": "604e123c-f07b-4036-b2e1-f72797d59af8"
+        "login": "",
+        "password": "",
+        "companyId": ""
     }
     r = requests.post(base_url + 'auth/keys', json=keys)
     assert r.status_code == 201
@@ -127,6 +127,6 @@ def test_get_company_by_empty_id(get_auth_token):
     r = requests.get(base_url + "projects/",
                      headers=my_headers, json=body)
 
-    assert r.status_code == 404
+    assert r.status_code == 404  # баг: при любых данных выдаёт 200
 
 # pytest test_yougile.py
